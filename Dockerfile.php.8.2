@@ -1,0 +1,5 @@
+FROM ghcr.io/phpstan/phpstan:latest-php8.2
+
+RUN apk --update --progress --no-cache
+RUN apk add icu-dev libxml2-dev
+RUN docker-php-ext-install intl soap mysqli
