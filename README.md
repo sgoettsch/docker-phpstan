@@ -1,14 +1,15 @@
 # Docker PHPStan
 
-Docker images to run phpstan commands without the need to install it.
+Docker images to run PHPStan commands without the need to install it.
 
 Supports different PHP Versions and has extra PHP extensions installed compared to the official package.
 
-The extra installed extensions should prevent undefined function or undefined class errors in the phpstan run.
+The extra installed extensions should prevent undefined function or undefined class errors in the PHPStan run.
 
 ### Extra Extensions
 - Sockets
 - MySQLi
+- XML
 - Openswoole
 - Redis
 
