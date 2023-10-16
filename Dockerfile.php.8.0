@@ -1,14 +1,14 @@
 FROM ghcr.io/phpstan/phpstan:latest-php8.0
 
 RUN apk update --progress --no-cache
-RUN apk add icu-dev libxml2-dev
+RUN apk add icu-dev libxml2-dev libzip-dev
 RUN apk add --no-cache linux-headers
-RUN docker-php-ext-install intl soap mysqli sockets xml
+RUN docker-php-ext-install intl soap mysqli sockets xml zip
 
 # Composer
 RUN curl -sfL https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
 RUN chmod +x /usr/bin/composer
-RUN composer self-update --clean-backups 2.1.6
+RUN composer self-update --clean-backups 2.6.5
 
 # Openswoole
 RUN apk update
