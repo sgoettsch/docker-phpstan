@@ -15,11 +15,11 @@ The extra installed extensions should prevent undefined function or undefined cl
 
 ### Example Commands:
 
-- PHP 8.2:
-```docker run --rm --mount type=bind,src=$(pwd),target=/app ghcr.io/sgoettsch/docker-phpstan:latest-php8.2 stan analyse /app```
+#### PHP 8.2:
+```docker run --rm --mount type=bind,src=$(pwd),target=/app ghcr.io/sgoettsch/docker-phpstan:latest-php8.2 analyse /app```
 
-- PHP 8.1:
-```docker run --rm --mount type=bind,src=$(pwd),target=/app ghcr.io/sgoettsch/docker-phpstan:latest-php8.1 stan analyse /app```
+#### PHP 8.1:
+```docker run --rm --mount type=bind,src=$(pwd),target=/app ghcr.io/sgoettsch/docker-phpstan:latest-php8.1 analyse /app```
 
-- PHP 8.0:
-```docker run --rm --mount type=bind,src=$(pwd),target=/app ghcr.io/sgoettsch/docker-phpstan:latest-php8.0 stan analyse /app```
+#### PHP 8.0:
+```docker run --rm --mount type=bind,src=$(pwd),target=/app ghcr.io/sgoettsch/docker-phpstan:latest-php8.0 analyse /app```
