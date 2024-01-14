@@ -14,7 +14,7 @@
   "useBaseBranchConfig": "merge",
   "prHourlyLimit": 0,
   "prConcurrentLimit": 0,
-  "dependencyDashboard": true,
+  "dependencyDashboard": false,
   "packageRules": [
     {
       "matchUpdateTypes": ["major", "minor"],
