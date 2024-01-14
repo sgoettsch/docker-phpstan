@@ -1,6 +1,24 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
+    "config:recommended",
+    "docker:pinDigests",
+    ":disableDependencyDashboard"
+  ],
+  "baseBranches": [
+    "master"
+  ],
+  "assignees": [
+    "sgoettsch"
+  ],
+  "useBaseBranchConfig": "merge",
+  "prHourlyLimit": 0,
+  "prConcurrentLimit": 0,
+  "dependencyDashboard": true,
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["major", "minor"],
+      "enabled": false
+    }
   ]
 }
