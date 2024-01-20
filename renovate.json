@@ -3,7 +3,9 @@
   "extends": [
     "config:recommended",
     "docker:pinDigests",
-    ":disableDependencyDashboard"
+    ":disableDependencyDashboard",
+    "helpers:pinGitHubActionDigests",
+    "regexManagers:dockerfileVersions"
   ],
   "baseBranches": [
     "master"
@@ -15,8 +17,10 @@
   "prHourlyLimit": 0,
   "prConcurrentLimit": 0,
   "dependencyDashboard": false,
+  "separateMinorPatch": true,
   "packageRules": [
     {
+      "matchPackageNames": ["php"],
       "matchUpdateTypes": ["major", "minor"],
       "enabled": false
     }

@@ -1,4 +1,4 @@
-FROM ghcr.io/phpstan/phpstan:latest-php8.2@sha256:7edf762061bce055d2162c5c8d7457b02ccb59e95290739719d0eaacb81b0cf3
+FROM ghcr.io/phpstan/phpstan:latest-php8.2
 
 RUN apk update --progress --no-cache
 RUN apk add icu-dev libxml2-dev libzip-dev
@@ -6,11 +6,15 @@ RUN apk add --no-cache linux-headers
 RUN docker-php-ext-install intl soap mysqli sockets xml zip
 
 # Composer
+# renovate: datasource=github-tags depName=composer/composer versioning=semver
+ENV COMPOSER_VERSION="2.6.5"
 RUN curl -sfL https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
 RUN chmod +x /usr/bin/composer
-RUN composer self-update --clean-backups 2.6.5
+RUN composer self-update --clean-backups ${COMPOSER_VERSION}
 
 # Openswoole
+# renovate: datasource=github-tags depName=openswoole/swoole-src versioning=semver
+ENV OPENSWOOLE_VERSION="v22.1.1"
 RUN apk update
 RUN apk add --no-cache linux-headers
 RUN apk add --no-cache libstdc++ postgresql-dev libpq
@@ -18,7 +22,7 @@ RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS curl-dev openssl-dev p
 RUN docker-php-ext-install sockets
 RUN docker-php-source extract
 RUN mkdir /usr/src/php/ext/openswoole
-RUN curl -sfL https://github.com/openswoole/swoole-src/archive/v22.1.2.tar.gz -o swoole.tar.gz
+RUN curl -sfL https://github.com/openswoole/swoole-src/archive/${OPENSWOOLE_VERSION}.tar.gz -o swoole.tar.gz
 RUN tar xfz swoole.tar.gz --strip-components=1 -C /usr/src/php/ext/openswoole
 RUN docker-php-ext-configure openswoole \
         --enable-http2 \
@@ -33,6 +37,8 @@ RUN docker-php-source delete
 RUN apk del .build-deps
 
 # Redis
+# renovate: datasource=github-tags depName=phpredis/phpredis versioning=semver
+ENV PHP_REDIS_VERSION="6.0.0"
 RUN apk add --no-cache pcre-dev $PHPIZE_DEPS
-RUN pecl install redis
+RUN pecl install redis-${PHP_REDIS_VERSION}
 RUN docker-php-ext-enable redis.so
