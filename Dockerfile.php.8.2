@@ -1,4 +1,4 @@
-FROM ghcr.io/phpstan/phpstan:latest-php8.2
+FROM ghcr.io/phpstan/phpstan:latest-php8.2@sha256:7edf762061bce055d2162c5c8d7457b02ccb59e95290739719d0eaacb81b0cf3
 
 RUN apk update --progress --no-cache
 RUN apk add icu-dev libxml2-dev libzip-dev
