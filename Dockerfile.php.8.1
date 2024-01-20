@@ -38,7 +38,7 @@ RUN apk del .build-deps
 
 # Redis
 # renovate: datasource=github-tags depName=phpredis/phpredis versioning=semver
-ENV PHP_REDIS_VERSION="6.0.0"
+ENV PHP_REDIS_VERSION="6.0.2"
 RUN apk add --no-cache pcre-dev $PHPIZE_DEPS
 RUN pecl install redis-${PHP_REDIS_VERSION}
 RUN docker-php-ext-enable redis.so
