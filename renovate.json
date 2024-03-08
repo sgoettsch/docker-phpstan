@@ -18,11 +18,20 @@
   "prConcurrentLimit": 0,
   "dependencyDashboard": false,
   "separateMinorPatch": true,
+  "platformAutomerge": true,
   "packageRules": [
     {
       "matchPackageNames": ["php"],
       "matchUpdateTypes": ["major", "minor"],
       "enabled": false
+    },
+    {
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true
+    },
+    {
+      "matchDepTypes": ["devDependencies"],
+      "automerge": true
     }
   ]
 }
