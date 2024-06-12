@@ -19,6 +19,7 @@
   "dependencyDashboard": false,
   "separateMinorPatch": true,
   "platformAutomerge": true,
+  "automergeType": "branch",
   "packageRules": [
     {
       "matchPackageNames": ["php"],
@@ -26,7 +27,7 @@
       "enabled": false
     },
     {
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "matchUpdateTypes": ["patch", "pin", "digest", "pinDigest"],
       "automerge": true,
       "automergeType": "branch"
     },
