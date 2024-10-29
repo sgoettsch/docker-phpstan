@@ -7,7 +7,7 @@ RUN docker-php-ext-install intl soap mysqli sockets xml zip
 
 # Composer
 # renovate: datasource=github-tags depName=composer/composer versioning=semver
-ENV COMPOSER_VERSION="2.8.1"
+ENV COMPOSER_VERSION="2.8.2"
 RUN curl -sfL https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
 RUN chmod +x /usr/bin/composer
 RUN composer self-update --clean-backups ${COMPOSER_VERSION}
