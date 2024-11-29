@@ -7,6 +7,7 @@ Supports different PHP Versions and has extra PHP extensions installed compared 
 The extra installed extensions should prevent undefined function or undefined class errors in the PHPStan run.
 
 ### Extra Extensions
+
 - Sockets
 - MySQLi
 - XML
@@ -15,11 +16,14 @@ The extra installed extensions should prevent undefined function or undefined cl
 
 ### Example Commands:
 
-#### PHP 8.3:
-```docker run --rm --mount type=bind,src=$(pwd),target=/app ghcr.io/sgoettsch/docker-phpstan:latest-php8.3 analyse /app```
+- PHP 8.4:
+  ```docker run --rm --mount type=bind,src=$(pwd),target=/app ghcr.io/sgoettsch/docker-phpstan:latest-php8.4 analyse /app```
 
-#### PHP 8.2:
-```docker run --rm --mount type=bind,src=$(pwd),target=/app ghcr.io/sgoettsch/docker-phpstan:latest-php8.2 analyse /app```
+- PHP 8.3:
+  ```docker run --rm --mount type=bind,src=$(pwd),target=/app ghcr.io/sgoettsch/docker-phpstan:latest-php8.3 analyse /app```
 
-#### PHP 8.1:
-```docker run --rm --mount type=bind,src=$(pwd),target=/app ghcr.io/sgoettsch/docker-phpstan:latest-php8.1 analyse /app```
+- PHP 8.2:
+  ```docker run --rm --mount type=bind,src=$(pwd),target=/app ghcr.io/sgoettsch/docker-phpstan:latest-php8.2 analyse /app```
+
+- PHP 8.1:
+  ```docker run --rm --mount type=bind,src=$(pwd),target=/app ghcr.io/sgoettsch/docker-phpstan:latest-php8.1 analyse /app```
