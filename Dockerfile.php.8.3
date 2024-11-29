@@ -1,4 +1,4 @@
-FROM ghcr.io/phpstan/phpstan:latest-php8.4
+FROM ghcr.io/phpstan/phpstan:latest-php8.3
 
 RUN apk update --progress --no-cache
 RUN apk add icu-dev libxml2-dev libzip-dev
@@ -14,19 +14,20 @@ RUN composer self-update --clean-backups ${COMPOSER_VERSION}
 
 # Openswoole
 # renovate: datasource=github-tags depName=openswoole/swoole-src versioning=semver
-ENV OPENSWOOLE_VERSION="v22.0.0"
+ENV OPENSWOOLE_VERSION="v22.1.2"
 RUN apk update
 RUN apk add --no-cache linux-headers
 RUN apk add --no-cache libstdc++ postgresql-dev libpq
 RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS curl-dev openssl-dev pcre-dev pcre2-dev zlib-dev
 RUN docker-php-ext-install sockets
 RUN docker-php-source extract
-RUN cd /tmp && git clone https://github.com/openswoole/ext-openswoole.git && \
-    cd ext-openswoole && \
-    git checkout ${OPENSWOOLE_VERSION} && \
-    phpize  && \
-    ./configure --enable-openssl --enable-hook-curl --enable-http2 --enable-mysqlnd && \
-    make && make install
+RUN cd /tmp && git clone https://github.com/openswoole/ext-openswoole.git
+WORKDIR /tmp/ext-openswoole
+RUN git checkout ${OPENSWOOLE_VERSION}
+RUN phpize
+RUN ./configure --enable-openssl --enable-hook-curl --enable-http2 --enable-mysqlnd
+RUN make
+RUN make install
 
 RUN touch /usr/local/etc/php/conf.d/openswoole.ini && \
     echo 'extension=openswoole.so' > /usr/local/etc/php/conf.d/zzz_openswoole.ini
