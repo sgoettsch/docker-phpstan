@@ -14,10 +14,10 @@ RUN composer self-update --clean-backups ${COMPOSER_VERSION}
 
 # Openswoole
 # renovate: datasource=github-tags depName=openswoole/swoole-src versioning=semver
-ENV OPENSWOOLE_VERSION="v22.1.2"
+ENV OPENSWOOLE_VERSION="v25.2.0"
 RUN apk update
 RUN apk add --no-cache linux-headers
-RUN apk add --no-cache libstdc++ postgresql-dev libpq
+RUN apk add --no-cache libstdc++ postgresql-dev libpq liburing liburing-dev
 RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS curl-dev openssl-dev pcre-dev pcre2-dev zlib-dev
 RUN docker-php-ext-install sockets
 RUN docker-php-source extract

@@ -13,7 +13,6 @@ RUN chmod +x /usr/bin/composer
 RUN composer self-update --clean-backups ${COMPOSER_VERSION}
 
 # Openswoole
-# renovate: datasource=github-tags depName=openswoole/swoole-src versioning=semver
 ENV OPENSWOOLE_VERSION="v22.1.2"
 RUN apk update
 RUN apk add --no-cache linux-headers
