@@ -1,4 +1,4 @@
-FROM ghcr.io/phpstan/phpstan:latest-php8.1@sha256:b9aca0ea84e9f59559395e5a00f9bc79da089ec0b7a01eca04a076419f9bc9ce
+FROM ghcr.io/phpstan/phpstan:latest-php8.1@sha256:13e2048d0a4d7c36db54c773fac6e7e78952ae10f344d5dd6205200c8be1d2b1
 
 RUN apk update --progress --no-cache
 RUN apk add icu-dev libxml2-dev libzip-dev
@@ -7,7 +7,7 @@ RUN docker-php-ext-install intl soap mysqli sockets xml zip
 
 # Composer
 # renovate: datasource=github-tags depName=composer/composer versioning=semver
-ENV COMPOSER_VERSION="2.8.3"
+ENV COMPOSER_VERSION="2.8.5"
 RUN curl -sfL https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
 RUN chmod +x /usr/bin/composer
 RUN composer self-update --clean-backups ${COMPOSER_VERSION}
