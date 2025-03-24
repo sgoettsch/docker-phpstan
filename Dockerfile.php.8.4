@@ -34,7 +34,7 @@ RUN touch /usr/local/etc/php/conf.d/openswoole.ini && \
 
 # Redis
 # renovate: datasource=github-tags depName=phpredis/phpredis versioning=semver
-ENV PHP_REDIS_VERSION="6.1.0"
+ENV PHP_REDIS_VERSION="6.2.0"
 RUN apk add --no-cache pcre-dev $PHPIZE_DEPS
 RUN pecl install redis-${PHP_REDIS_VERSION}
 RUN docker-php-ext-enable redis.so
