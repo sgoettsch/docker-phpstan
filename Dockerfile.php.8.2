@@ -4,7 +4,6 @@
 FROM ghcr.io/phpstan/phpstan:latest-php8.2@sha256:d07c97e0ffed36be55bc7e1ebae17e6739fef8d9ec6ee9faca8d6e49400351cd AS openswoole-builder
 
 # Openswoole
-# renovate: datasource=github-tags depName=openswoole/swoole-src versioning=semver
 ENV OPENSWOOLE_VERSION="v25.2.0"
 RUN apk add --no-cache linux-headers && \
     apk add --no-cache libstdc++ postgresql-dev libpq liburing liburing-dev && \
