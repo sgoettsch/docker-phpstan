@@ -1,3 +1,5 @@
+FROM ghcr.io/php/pie:bin AS pie-installer
+
 ### ------------------------------------------------
 ### Builder stage – OpenSwoole
 ### ------------------------------------------------
@@ -43,8 +45,9 @@ RUN touch /usr/local/etc/php/conf.d/openswoole.ini && \
 # Redis
 # renovate: datasource=github-tags depName=phpredis/phpredis versioning=semver
 ENV PHP_REDIS_VERSION="6.3.0"
-RUN apk add --no-cache pcre-dev $PHPIZE_DEPS && \
-    pecl install redis-${PHP_REDIS_VERSION} && \
+RUN --mount=type=bind,from=pie-installer,source=/pie,target=/usr/local/bin/pie \
+    apk add --no-cache pcre-dev $PHPIZE_DEPS && \
+    pie install phpredis/phpredis:${PHP_REDIS_VERSION} && \
     docker-php-ext-enable redis.so
 
 WORKDIR /app
