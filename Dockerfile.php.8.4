@@ -3,7 +3,7 @@ FROM ghcr.io/php/pie:bin@sha256:2dae3716164c80f9fc3bab3c816bb31294784499a5dc687b
 ### ------------------------------------------------
 ### Builder stage – OpenSwoole
 ### ------------------------------------------------
-FROM ghcr.io/phpstan/phpstan:latest-php8.4@sha256:7b5c3f63c06c816149e0f66a04525085602c4af11cf131ba7ef595dafd869819 AS openswoole-builder
+FROM ghcr.io/phpstan/phpstan:latest-php8.4@sha256:7f7e015b6a613b1313be9e51acc0286961412d99eeeaa17d739e521cfe0b2b47 AS openswoole-builder
 
 # Openswoole
 # renovate: datasource=github-tags depName=openswoole/swoole-src versioning=semver
@@ -25,7 +25,7 @@ RUN git checkout ${OPENSWOOLE_VERSION} && \
 ### ------------------------------------------------
 ### Final image
 ### ------------------------------------------------
-FROM ghcr.io/phpstan/phpstan:latest-php8.4@sha256:7b5c3f63c06c816149e0f66a04525085602c4af11cf131ba7ef595dafd869819
+FROM ghcr.io/phpstan/phpstan:latest-php8.4@sha256:7f7e015b6a613b1313be9e51acc0286961412d99eeeaa17d739e521cfe0b2b47
 
 RUN apk add --no-cache icu-dev libxml2-dev libzip-dev linux-headers && \
     docker-php-ext-install intl soap mysqli sockets xml zip
