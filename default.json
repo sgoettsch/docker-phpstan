@@ -1,0 +1,5 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "This repository is archived. Its images live on in sgoettsch/docker-service-container; this preset forwards to the replacement rules maintained there.",
+  "extends": ["github>sgoettsch/docker-service-container:replacements"]
+}
